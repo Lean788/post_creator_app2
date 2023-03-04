@@ -1,0 +1,17 @@
+{% extends './layout.html' %}
+
+{% block title %} Crea tu post {% endblock %}
+
+{% block body %}
+<div class="container">
+    <h1>¡Realiza tu pregunta!</h1>
+    <form action="/" method="POST">
+      <label for="input">Consulta:</label>
+      <input type="text" id="input" name="input" placeholder="Ingrese su prompt aquí...">
+      <button type="submit">Enviar</button>
+    </form>
+    <div id="output-container">
+      <p id="output">{{ output }}</p>
+    </div>
+</div>
+{% endblock %}
