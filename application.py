@@ -1,10 +1,9 @@
 import os
 import openai
-from flask import Flask, request, jsonify, render_template
+from flask import Flask, request, render_template
 from dotenv import load_dotenv
-import datetime 
 from flask_mysqldb import MySQL
-import pymysql
+
 
 
 os.chdir(os.path.dirname(__file__))
@@ -15,18 +14,18 @@ openai.api_key = os.getenv("ACCESS_KEY")
 
 app = Flask(__name__)
 
+app.config['MYSQL_HOST'] = os.getenv("HOST_DB")
+app.config['MYSQL_USER'] = os.getenv("USERNAME_DB")
+app.config['MYSQL_PASSWORD'] = os.getenv("PASSWORD_DB")
+app.config['MYSQL_DB'] = 'prompt_database'
+app.config['MYSQL_CURSORCLASS'] = 'DictCursor'
+
 mysql = MySQL(app)
-
-#Credenciales
-username = "admin"
-password = "proyecto"
-host = "database-1.cnvu29xw2umg.us-east-2.rds.amazonaws.com" 
-port = 3306
-
 
 # Definir la ruta de la página principal
 @app.route('/', methods=['GET', 'POST'])
 def index():
+
     if request.method == 'POST':
         # Obtener la entrada del usuario desde el formulario
         user_input = request.form['input']
@@ -41,32 +40,25 @@ def index():
         output = response.choices[0].text
 
         #Conexión DB
-        db = pymysql.connect(host = host,
-                            user = username,
-                            password = password,
-                            cursorclass = pymysql.cursors.DictCursor
-        )
-        cursor = db.cursor()
+        cursor = mysql.connection.cursor()
 
         # Seleccionar DB
-
-        cursor.connection.commit()
         use_db = ''' USE prompt_database'''
         cursor.execute(use_db)
 
         # Guardar pregunta y respuesta en la base de datos
-        time = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-        cursor.execute('''INSERT INTO prompt (time, question, answer)
-                      VALUES (%s, %s, %s)''',
-                   (time, user_input, output))
-        db.connection.commit()
-        db.close()
-        
+        cursor.execute('''INSERT INTO prompt (question, answer)
+                        VALUES (%s, %s)''',
+                    (user_input, output))
+        mysql.connection.commit()
+        cursor.close()
+                
         # Renderizar la plantilla del formulario con la respuesta de GPT-3
         return render_template('index.html', output=output)
     else:
         # Renderizar la plantilla del formulario
         return render_template('index.html')
+
 
 if __name__ == '__main__':
     app.run(debug=True)
