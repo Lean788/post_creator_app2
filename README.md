@@ -1,7 +1,7 @@
 # Post_creator_app
 ## _Tu futuro amo_
 
-![Imagen](./img/image.png)
+![Post creator app](./src/img/image.png)
 
 
 [![N|Solid](https://cldup.com/dTxpPi9lDf.thumb.png)](https://media.licdn.com/dms/image/C4E12AQEegVv69D2cOg/article-cover_image-shrink_600_2000/0/1520133367755?e=2147483647&v=beta&t=KdnuCmKpFPY5lkXwAbLbHXmWAU-gIvbTqyVT6Vvzq5o)
