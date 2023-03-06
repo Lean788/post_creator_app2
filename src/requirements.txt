@@ -2,4 +2,3 @@ Flask==2.2.3
 Flask-MySQLdb==1.0.1
 mysqlclient==2.1.1
 openai==0.27.0
-python-dotenv==1.0.0

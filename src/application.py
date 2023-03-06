@@ -1,7 +1,6 @@
 import os
 import openai
 from flask import Flask, request, render_template
-from dotenv import load_dotenv
 from flask_mysqldb import MySQL
 
 
@@ -9,7 +8,7 @@ from flask_mysqldb import MySQL
 os.chdir(os.path.dirname(__file__))
 
 # Traernos la API_KEY
-load_dotenv()
+
 openai.api_key = os.getenv("ACCESS_KEY")
 
 app = Flask(__name__)
@@ -61,4 +60,4 @@ def index():
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True, host='0.0.0.0')

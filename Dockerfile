@@ -4,5 +4,5 @@ COPY ./src .
 RUN apk add --no-cache mariadb-connector-c-dev build-base && \
     pip install -r requirements.txt && \
     apk del build-base
-EXPOSE 5000
 CMD ["python", "application.py"]
+EXPOSE 5000
