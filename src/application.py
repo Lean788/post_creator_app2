@@ -3,8 +3,6 @@ import openai
 from flask import Flask, request, render_template
 from flask_mysqldb import MySQL
 
-
-
 os.chdir(os.path.dirname(__file__))
 
 # Traernos la API_KEY
