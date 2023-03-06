@@ -63,7 +63,7 @@ Para utilizar nuestro proyecto, se requieren los siguientes requisitos:
 - Clonar el repositorio
 - Primero, clone el repositorio de GitHub en su máquina local:
 - bash
-- git clone https://github.com/tu_usuario/tu_repositorio.git
+- git clone https://github.com/Lean788/post_creator_app2
 - Crear y ejecutar el contenedor Docker
 
 
