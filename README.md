@@ -140,6 +140,16 @@ Para detener el contenedor Docker, presione Ctrl + C en la línea de comando don
 ```docker stop nombre_contenedor```
 ¡Y eso es todo! Con estos pasos, deberías poder instalar y ejecutar tu aplicación Flask en Docker.
 
+### Contribuidores:
+
+- Celia Cabello Navarro
+- Pedro Vergara Urquijo
+- Leandro Salvado Silva
+
+
+----------------------------------------------------
+
+
 
 **Free Software, Hell Yeah!**
 
