@@ -65,7 +65,7 @@ Para utilizar nuestro proyecto, se requieren los siguientes requisitos:
 - bash
 - git clone https://github.com/Lean788/post_creator_app2
 - Crear y ejecutar el contenedor Docker
-
+- Imagen Docker del proyecto, creado y subido a Docker Hub: https://hub.docker.com/r/celiacnavarro/post_creator
 
 
 ## Pasos
